@@ -17,6 +17,11 @@ struct MainView: View {
                 .edgesIgnoringSafeArea(.all)
             
             SideMenu(selectedTab: $selectedTab)
+                .onChange(of: selectedTab) { _ in
+                    withAnimation(.spring()) {
+                        show.toggle()
+                    }
+                }
             ZStack{
                 Color.white
                     .opacity(0.5)
